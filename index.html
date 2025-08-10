@@ -89,6 +89,96 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 1px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .logo:hover {
+            animation: scanline-glitch 0.8s ease-in-out;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.8), transparent);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -100%;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .logo:hover::before {
+            animation: scanline-1 0.8s ease-in-out;
+        }
+
+        .logo:hover::after {
+            animation: scanline-2 0.8s ease-in-out 0.1s;
+        }
+
+        @keyframes scanline-glitch {
+            0%, 100% {
+                transform: translate(0);
+                opacity: 1;
+            }
+            20% {
+                transform: translate(-1px, 0);
+                opacity: 0.9;
+            }
+            40% {
+                transform: translate(1px, 0);
+                opacity: 0.8;
+            }
+            60% {
+                transform: translate(-0.5px, 0);
+                opacity: 0.9;
+            }
+            80% {
+                transform: translate(0.5px, 0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scanline-1 {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes scanline-2 {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
         }
 
         .nav-links {
@@ -178,6 +268,116 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -2px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .hero h1:hover {
+            animation: hero-scanline-glitch 1s ease-in-out;
+        }
+
+        .hero h1::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.9), transparent);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            top: 70%;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .hero h1:hover::before {
+            animation: hero-scanline-1 1s ease-in-out;
+        }
+
+        .hero h1:hover::after {
+            animation: hero-scanline-2 1s ease-in-out 0.2s;
+        }
+
+        @keyframes hero-scanline-glitch {
+            0%, 100% {
+                transform: translate(0);
+                opacity: 1;
+            }
+            10% {
+                transform: translate(-2px, 0);
+                opacity: 0.9;
+            }
+            20% {
+                transform: translate(2px, 0);
+                opacity: 0.8;
+            }
+            30% {
+                transform: translate(-1px, 0);
+                opacity: 0.9;
+            }
+            40% {
+                transform: translate(1px, 0);
+                opacity: 0.85;
+            }
+            50% {
+                transform: translate(-0.5px, 0);
+                opacity: 0.9;
+            }
+            60% {
+                transform: translate(0.5px, 0);
+                opacity: 0.95;
+            }
+            70% {
+                transform: translate(-1px, 0);
+                opacity: 0.9;
+            }
+            80% {
+                transform: translate(1px, 0);
+                opacity: 0.95;
+            }
+            90% {
+                transform: translate(-0.5px, 0);
+                opacity: 0.98;
+            }
+        }
+
+        @keyframes hero-scanline-1 {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+
+        @keyframes hero-scanline-2 {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            40% {
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
         }
 
         .hero .subtitle {
@@ -255,7 +455,152 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Project Grid */
+        /* Portfolio Section */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(25, 25, 25, 0.8);
+            border: 2px solid rgba(64, 224, 208, 0.3);
+            color: #ffffff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(64, 224, 208, 0.2);
+            border-color: #40e0d0;
+            color: #40e0d0;
+            transform: translateY(-2px);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .portfolio-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .portfolio-image {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        .vfx-bg {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .motion-bg {
+            background: linear-gradient(135deg, #a55eea, #8e44ad);
+        }
+
+        .editing-bg {
+            background: linear-gradient(135deg, #26de81, #20bf6b);
+        }
+
+        .3d-bg {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            padding: 1.5rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #40e0d0;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .portfolio-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .portfolio-link {
+            padding: 0.5rem 1rem;
+            background: rgba(64, 224, 208, 0.2);
+            color: #40e0d0;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid #40e0d0;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .portfolio-link:hover {
+            background: #40e0d0;
+            color: #000;
+            transform: translateY(-2px);
+        }
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -461,6 +806,7 @@
             <div class="logo">TENAKINVFX</div>
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -480,13 +826,128 @@
             <div class="subtitle">Visual Effects Artist & Editor</div>
             <p class="description">Crafting immersive visual experiences through cutting-edge VFX, dynamic video editing, and creative storytelling that brings imagination to life.</p>
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
                 <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title">Portfolio Gallery</h2>
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="vfx">VFX</button>
+            <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+            <button class="filter-btn" data-filter="editing">Video Editing</button>
+            <button class="filter-btn" data-filter="3d">3D Animation</button>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="vfx">
+                <div class="portfolio-image">
+                    <div class="placeholder-image vfx-bg">VFX REEL</div>
+                    <div class="portfolio-overlay">
+                        <h3>Explosion VFX</h3>
+                        <p>Realistic explosion effects with particle systems</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link">▶ Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="motion">
+                <div class="portfolio-image">
+                    <div class="placeholder-image motion-bg">MOTION</div>
+                    <div class="portfolio-overlay">
+                        <h3>Logo Animation</h3>
+                        <p>Dynamic brand identity reveal with kinetic typography</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link">▶ Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="editing">
+                <div class="portfolio-image">
+                    <div class="placeholder-image editing-bg">EDIT</div>
+                    <div class="portfolio-overlay">
+                        <h3>Music Video</h3>
+                        <p>Creative editing with rhythm-based cuts and effects</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link">▶ Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="3d">
+                <div class="portfolio-image">
+                    <div class="placeholder-image 3d-bg">3D</div>
+                    <div class="portfolio-overlay">
+                        <h3>Product Viz</h3>
+                        <p>Photorealistic 3D product visualization</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link">▶ Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="vfx">
+                <div class="portfolio-image">
+                    <div class="placeholder-image vfx-bg">COMPOSITING</div>
+                    <div class="portfolio-overlay">
+                        <h3>Matte Painting</h3>
+                        <p>Digital environments and set extensions</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link">▶ Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="motion">
+                <div class="portfolio-image">
+                    <div class="placeholder-image motion-bg">KINETIC</div>
+                    <div class="portfolio-overlay">
+                        <h3>Title Sequence</h3>
+                        <p>Cinematic opening titles with dynamic typography</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link">▶ Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="editing">
+                <div class="portfolio-image">
+                    <div class="placeholder-image editing-bg">COMMERCIAL</div>
+                    <div class="portfolio-overlay">
+                        <h3>Brand Commercial</h3>
+                        <p>High-impact commercial with storytelling focus</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link">▶ Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="3d">
+                <div class="portfolio-image">
+                    <div class="placeholder-image 3d-bg">CHARACTER</div>
+                    <div class="portfolio-overlay">
+                        <h3>Character Rig</h3>
+                        <p>Fully rigged character with facial animations</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="portfolio-link">▶ Watch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
@@ -697,6 +1158,31 @@
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
+            });
+        });
+
+        // Portfolio filtering functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
             });
         });
 
